@@ -10,7 +10,7 @@ from celery import task,shared_task
 def add(a, b):
     return a + b
 
-@task
+@task()
 def muti(a, b):
     return a*b
 
