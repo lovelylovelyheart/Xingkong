@@ -100,17 +100,17 @@ CELERY_RESULT_BACKEND = 'redis://localhost:6379/1'  # BACKEND配置，这里使�
 CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'yaml']
 CELERY_RESULT_SERIALIZER = 'json'  # 结果序列化方案
 CELERY_TASK_SERIALIZER = 'json'
-# CELERY_IMPORTS = (
-#     'apps.app01.tasks',
-# )
+CELERY_IMPORTS = (
+    'apps.app01.tasks',
+)
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
-CELERYBEAT_SCHEDULE = {
-    'mutiti': {
-        "task": "apps.app01.tasks.muti",
-        "schedule": timedelta(seconds=5),  #每5秒执行一下函数
-        "args": (4, 5),  #参数
-    },
-}
+# CELERYBEAT_SCHEDULE = {
+#     'mutiti': {
+#         "task": "apps.app01.tasks.muti",
+#         "schedule": timedelta(seconds=5),  #每5秒执行一下函数
+#         "args": (4, 5),  #参数
+#     },
+# }
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 

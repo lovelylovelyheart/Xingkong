@@ -1,3 +1,5 @@
+import datetime
+
 from celery.task import periodic_task
 
 from Xingkong.celery import app
@@ -11,3 +13,7 @@ def add(a, b):
 @task
 def muti(a, b):
     return a*b
+
+@periodic_task(run_every=datetime.timedelta(seconds=5))
+def hello():
+    return "hello world"
