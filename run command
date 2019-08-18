@@ -1,0 +1,3 @@
+celery -A Xingkong worker -l info -P eventlet
+
+celery -S Xingkong beat -l info
