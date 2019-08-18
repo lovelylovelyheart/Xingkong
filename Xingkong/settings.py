@@ -17,6 +17,7 @@ import sys
 
 from datetime import timedelta
 
+from celery import platforms
 from celery.schedules import crontab
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -37,7 +38,7 @@ ALLOWED_HOSTS = ["*"]
 # import django_celery_beat
 import djcelery
 import django_celery_beat
-
+djcelery.setup_loader()
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -104,8 +105,9 @@ CELERY_TASK_SERIALIZER = 'json'
 #     'apps.app01.tasks',
 # )
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
+platforms.C_FORCE_ROOT = True
 CELERYBEAT_SCHEDULE = {
-    'mutiti': {
+    'muti': {
         "task": "apps.app01.tasks.muti",
         "schedule": timedelta(seconds=5),  #每5秒执行一下函数
         "args": (4, 5),  #参数
